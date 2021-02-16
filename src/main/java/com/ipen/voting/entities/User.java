@@ -15,6 +15,7 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import com.ipen.voting.models.Authority;
+import com.ipen.voting.models.UserType;
 import com.sun.istack.NotNull;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -42,15 +43,18 @@ public class User implements UserDetails {
     private String lastName;
     private String phone;
     private boolean enabled = true;
+    @Column(nullable = false)
+	private UserType userType;
 
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, mappedBy = "user")
     private Set<UserRole> userRoles = new HashSet<>();
 
-    public User(String email, String password, String firstName, String lastName) {
+    public User(String email, String password, String firstName, String lastName, UserType userType ) {
         this.email = email;
         this.password = password;
         this.firstName = firstName;
         this.lastName = lastName;
+        this.userType=userType;
     }
 
     @Override

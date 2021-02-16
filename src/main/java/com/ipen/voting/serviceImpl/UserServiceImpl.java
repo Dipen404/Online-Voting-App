@@ -1,6 +1,7 @@
 package com.ipen.voting.serviceImpl;
 
 import java.io.IOException;
+import java.util.List;
 import java.util.Set;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,5 +39,4 @@ public class UserServiceImpl implements UserService {
 
 		return;
 	}
-
 }
